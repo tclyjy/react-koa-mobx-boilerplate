@@ -18,6 +18,11 @@ if (isDev) {
         template: path.join(__dirname, './../', 'client/index.html'),
         favicon: path.join(__dirname, './../', 'favicon.ico')
       }),
+      new HtmlWebpackPlugin({
+        template: '!!ejs-compiled-loader!' + path.join(__dirname, './../', 'client/server.ejs'),
+        filename: 'server.ejs',
+        favicon: path.join(__dirname, './../', 'favicon.ico')
+      })
     ],
     devServer: {
       host: 'localhost',
@@ -51,6 +56,11 @@ if (isDev) {
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, './../', 'client/index.html'),
+        favicon: path.join(__dirname, './../', 'favicon.ico')
+      }),
+      new HtmlWebpackPlugin({
+        template: '!!ejs-compiled-loader!' + path.join(__dirname, './../', 'client/server.ejs'),
+        filename: 'server.ejs',
         favicon: path.join(__dirname, './../', 'favicon.ico')
       })
     ],

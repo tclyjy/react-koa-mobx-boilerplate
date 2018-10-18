@@ -1,9 +1,14 @@
 import { observable, computed, action } from 'mobx';
 
 export class AppState {
-  @observable count = 0;
+  constructor({ count, name } = { count: 0, name: 'Eric' }) {
+    this.count = count;
+    this.name = name;
+  }
 
-  @observable name = 'Eric';
+  @observable count;
+
+  @observable name;
 
   @computed get msg() {
     return `${this.name} say count is ${this.count}`;
@@ -16,11 +21,14 @@ export class AppState {
   @action add() {
     this.count += 1;
   }
+
+  toJson() {
+    return {
+      count: this.count,
+      name: this.name,
+    };
+  }
 }
 const appState = new AppState();
-
-setInterval(() => {
-  appState.add();
-}, 1000);
 
 export default appState;

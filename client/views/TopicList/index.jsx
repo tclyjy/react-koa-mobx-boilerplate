@@ -15,6 +15,16 @@ class TopicList extends React.Component {
     this.getMessage = this.getMessage.bind(this);
   }
 
+  bootstrap() {
+    return new Promise((resolve) => {
+      const { appState } = this.props;
+      setTimeout(() => {
+        appState.count = 3;
+        resolve(true);
+      });
+    });
+  }
+
   getTopic() {
     axios.get('/api/topics').then((res) => {
       console.log(res);

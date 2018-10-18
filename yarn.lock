@@ -2015,6 +2015,28 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "http://registry.npm.taobao.org/ee-first/download/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
+ejs-compiled-loader@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/ejs-compiled-loader/download/ejs-compiled-loader-1.1.0.tgz#6a294debd1810ba7ebf77273fe1b1a8df0572761"
+  dependencies:
+    ejs "git+https://github.com/nemanjan00/ejs.git"
+    uglify-js "~1.3.4"
+
+ejs-loader@^0.3.1:
+  version "0.3.1"
+  resolved "http://registry.npm.taobao.org/ejs-loader/download/ejs-loader-0.3.1.tgz#280c8e030bd32428c29826f6bbf6b6d0c14f7ca4"
+  dependencies:
+    loader-utils "^0.2.7"
+    lodash "^3.6.0"
+
+ejs@^2.6.1:
+  version "2.6.1"
+  resolved "http://registry.npm.taobao.org/ejs/download/ejs-2.6.1.tgz#498ec0d495655abc6f23cd61868d926464071aa0"
+
+"ejs@git+https://github.com/nemanjan00/ejs.git":
+  version "1.0.0"
+  resolved "git+https://github.com/nemanjan00/ejs.git#ba8ef7f575e190fc60017bc82911151378fe3258"
+
 elliptic@^6.0.0:
   version "6.4.1"
   resolved "http://registry.npm.taobao.org/elliptic/download/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
@@ -3571,7 +3593,7 @@ loader-runner@^2.3.0:
   version "2.3.1"
   resolved "http://registry.npm.taobao.org/loader-runner/download/loader-runner-2.3.1.tgz#026f12fe7c3115992896ac02ba022ba92971b979"
 
-loader-utils@^0.2.16:
+loader-utils@^0.2.16, loader-utils@^0.2.7:
   version "0.2.17"
   resolved "http://registry.npm.taobao.org/loader-utils/download/loader-utils-0.2.17.tgz#f86e6374d43205a6e6c60e9196f17c0299bfb348"
   dependencies:
@@ -3605,6 +3627,10 @@ locate-path@^3.0.0:
 lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "http://registry.npm.taobao.org/lodash.debounce/download/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+
+lodash@^3.6.0:
+  version "3.10.1"
+  resolved "http://registry.npm.taobao.org/lodash/download/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@^4.17.10, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5:
   version "4.17.11"
@@ -4615,6 +4641,12 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-async-bootstrapper@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/react-async-bootstrapper/download/react-async-bootstrapper-2.1.1.tgz#8bc4115108e2ce6ba5771850a6814980599e09f2"
+  dependencies:
+    react-tree-walker "^4.2.0"
+
 react-dom@^16.5.2:
   version "16.5.2"
   resolved "http://registry.npm.taobao.org/react-dom/download/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
@@ -4665,6 +4697,10 @@ react-router@^4.3.1:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-tree-walker@^4.2.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/react-tree-walker/download/react-tree-walker-4.3.0.tgz#b7cae498cebb490281e9e99a01bdb9c6b4926cd3"
 
 react@^16.5.2:
   version "16.5.2"
@@ -4986,7 +5022,7 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
-serialize-javascript@^1.4.0:
+serialize-javascript@^1.4.0, serialize-javascript@^1.5.0:
   version "1.5.0"
   resolved "http://registry.npm.taobao.org/serialize-javascript/download/serialize-javascript-1.5.0.tgz#1aa336162c88a890ddad5384baebc93a655161fe"
 
@@ -5513,6 +5549,10 @@ uglify-js@3.4.x, uglify-js@^3.0.0:
   dependencies:
     commander "~2.17.1"
     source-map "~0.6.1"
+
+uglify-js@~1.3.4:
+  version "1.3.5"
+  resolved "http://registry.npm.taobao.org/uglify-js/download/uglify-js-1.3.5.tgz#4b5bfff9186effbaa888e4c9e94bd9fc4c94929d"
 
 uglifyjs-webpack-plugin@^1.2.4:
   version "1.3.0"

@@ -4,11 +4,14 @@ const proxy = require('koa-proxies');
 const webpack = require('webpack');
 const serverConfig = require('../../build/webpack.config.server');
 const Memory = require('memory-fs');
+const asyncBootstrapper = require('react-async-bootstrapper');
 const ReactDOMServer = require('react-dom/server');
+const ejs = require('ejs');
+const serialize = require('serialize-javascript')
 
 const getTemplate = async () => {
   try {
-    const res = await axios.get('http://localhost:8080/public/index.html')
+    const res = await axios.get('http://localhost:8080/public/server.ejs')
     return res.data;
   } catch (err) {
     console.log(err)
@@ -39,18 +42,32 @@ serverCompiler.watch({}, (err, states) => {
   createStoreMap = m.exports.createStoreMap;
 })
 
+const getStoreState = (stores) => {
+  return Object.keys(stores).reduce((result, storeName) => {
+    result[storeName] = stores[storeName].toJson()
+    return result
+  }, {})
+}
+
 module.exports = function (app, router) {
   app.use(proxy('/public', {
     target: 'http://localhost:8080'
   }))
   router.get('*', async (ctx, next) => {
     const template = await getTemplate();
+    console.log(template);
     const routerContext = {};
-    const app = serverBundle(createStoreMap(), routerContext, ctx.url);
+    const stores = createStoreMap();
+    const app = serverBundle(stores, routerContext, ctx.url);
+    await asyncBootstrapper(app);
     const content = ReactDOMServer.renderToString(app);
     if (routerContext.url) {
       ctx.redirect(routerContext.url);
     };
-    ctx.response.body = template.replace('<app></app>', content);
+    const state = getStoreState(stores);
+    ctx.response.body = ejs.render(template, {
+      appString: content,
+      initialState: serialize(state)
+    })
   })
 }
