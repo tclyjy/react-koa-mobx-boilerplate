@@ -7,6 +7,7 @@ module.exports = webpackMerge(webpackBaseConfig, {
   entry: {
     app: path.join(__dirname, './../', 'client/server-entry.jsx')
   },
+  externals: Object.keys(require('../package.json').dependencies),
   output: {
     filename: 'server-entry.js',
     libraryTarget: 'commonjs2'
