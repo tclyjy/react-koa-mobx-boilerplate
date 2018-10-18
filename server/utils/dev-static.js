@@ -18,7 +18,7 @@ const memory = new Memory();
 const serverCompiler = webpack(serverConfig);
 serverCompiler.outputFileSystem = memory; // 内存写入bundle
 
-let serverBundle;
+let serverBundle, createStoreMap;
 serverCompiler.watch({}, (err, states) => {
   if (err) throw err;
   states = states.toJson();
@@ -36,6 +36,7 @@ serverCompiler.watch({}, (err, states) => {
   const m = new Module();
   m._compile(bundle, 'server-entry.js');  // Error: path must be a string (没有指定文件名无法引用)
   serverBundle = m.exports.default;
+  createStoreMap = m.exports.createStoreMap;
 })
 
 module.exports = function (app, router) {
@@ -44,7 +45,12 @@ module.exports = function (app, router) {
   }))
   router.get('*', async (ctx, next) => {
     const template = await getTemplate();
-    const content = ReactDOMServer.renderToString(serverBundle);
+    const routerContext = {};
+    const app = serverBundle(createStoreMap(), routerContext, ctx.url);
+    const content = ReactDOMServer.renderToString(app);
+    if (routerContext.url) {
+      ctx.redirect(routerContext.url);
+    };
     ctx.response.body = template.replace('<app></app>', content);
   })
 }
