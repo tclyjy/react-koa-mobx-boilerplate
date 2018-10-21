@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
 import Routes from '../route';
 
 export default class App extends React.Component {
@@ -8,7 +9,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello React</h1>
+        <Typography variant="h1" gutterBottom>Hello React</Typography>
         <div>
           <Link to="/">首页</Link>
           <Link to="/detail">详情页</Link>

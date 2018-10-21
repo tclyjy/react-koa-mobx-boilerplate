@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Helmet from 'react-helmet';
+import Button from '@material-ui/core/Button';
 import { AppState } from '../../store/appState';
 
 @inject('appState')
@@ -40,7 +41,7 @@ class TopicList extends React.Component {
 
   login() {
     axios.post('/api/login', {
-      accessToken: '2580a54c-40d5-4e82-bcdf-3a98ede221dc',
+      accessToken: '2580a54c-40d5-4e82-bcdf-3a98ede221cb',
     }).then((res) => {
       console.log(res);
     });
@@ -62,9 +63,9 @@ class TopicList extends React.Component {
         <input type="text" onChange={this.changeName} />
         <div>{appState.msg}</div>
         <div>
-          <input type="button" onClick={this.login} value="login" />
-          <input type="button" onClick={this.getTopic} value="topic" />
-          <input type="button" onClick={this.getMessage} value="message" />
+          <Button variant="contained" color="primary" onClick={this.login}>login</Button>
+          <Button variant="contained" color="primary" onClick={this.getTopic}>getTopic</Button>
+          <Button variant="contained" color="primary" onClick={this.getMessage}>getMessage</Button>
         </div>
       </div>
     );
